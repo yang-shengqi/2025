@@ -1,0 +1,123 @@
+/* ============================================================
+   音乐播放器 —— 绝对定位在卡片上方
+   ============================================================ */
+.music-player {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 40px);   /* 卡片上方，间距 20px，想更远就调大 */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 22px;
+  border-radius: 20px;
+  background: #e0e5ec;
+  box-shadow: 8px 8px 16px #b8bcc2, -8px -8px 16px #ffffff;
+  z-index: 30;
+  font-family: "Optima","Avenir Next","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+
+/* 小屏：改成静态，跟在卡片后面 */
+@media screen and (max-width: 768px) {
+  .music-player {
+    position: static;
+    width: 100%;
+    margin: 20px auto 0;
+  }
+}
+
+/* 播放按钮 */
+.mp-btn {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #e0e5ec;
+  box-shadow: 4px 4px 8px #b8bcc2, -4px -4px 8px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow .2s ease;
+}
+.mp-btn:active {
+  box-shadow: inset 4px 4px 8px #b8bcc2, inset -4px -4px 8px #ffffff;
+}
+.mp-icon {
+  width: 16px;
+  height: 16px;
+  fill: #6d5dfc;
+}
+
+/* 中间：曲名 + 时间 + 进度条 */
+.mp-mid {
+  flex: 1;
+  min-width: 0;
+}
+.mp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.mp-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2f333b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp-time {
+  font-size: 11px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  flex: 0 0 auto;
+  margin-left: 10px;
+}
+
+.mp-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 50px;
+  background: #e0e5ec;
+  box-shadow: inset 3px 3px 6px #b8bcc2, inset -3px -3px 6px #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+}
+.mp-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #6d5dfc, #a78bfa);
+  transition: width .1s linear;
+}
+
+/* 音量 */
+.mp-vol {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mp-vol-icon {
+  width: 16px;
+  height: 16px;
+  fill: #9aa1ac;
+}
+.mp-vol-bar {
+  width: 60px;
+  height: 6px;
+  border-radius: 50px;
+  background: #e0e5ec;
+  box-shadow: inset 2px 2px 5px #b8bcc2, inset -2px -2px 5px #ffffff;
+  cursor: pointer;
+}
+.mp-vol-fill {
+  height: 100%;
+  width: 70%;
+  border-radius: 50px;
+  background: #6d5dfc;
+}
